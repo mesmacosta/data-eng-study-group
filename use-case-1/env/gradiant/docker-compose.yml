@@ -1,0 +1,33 @@
+# based on https://github.com/Gradiant/airflow-docker/blob/master/docker-compose.yml
+version: "3.7"
+services:
+  airflow-backend:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    networks: 
+      - airflow-backend
+    volumes:
+      - "airflow-backend:/var/lib/mysql"
+    env_file:
+      - mysql.env
+    
+  airflow-engine:
+    build: ./airflow-engine
+    depends_on: 
+      - airflow-backend
+    init: true
+    networks: 
+      - airflow-backend
+    volumes:
+      - "airflow-engine:/root/airflow/"
+    ports:
+      - "8080:8080"
+    env_file:
+      - mysql.env
+
+networks:
+  airflow-backend:
+
+volumes:
+  airflow-engine:
+  airflow-backend:

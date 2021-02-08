@@ -1,0 +1,8 @@
+# Generated directories
+.idea/
+airflow_files/
+database/
+logs/
+files/
+data/
+venv/
