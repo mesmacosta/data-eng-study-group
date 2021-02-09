@@ -19,6 +19,13 @@ source ./venv/bin/activate
 # Install airflow
 - Mac users error: `xcode-select --install`
 
+# Tutorial
+http://airflow.apache.org/docs/apache-airflow/stable/start/local.html
+
+# default sqllite
+pip install apache-airflow
+
+## postgresql
 pip install apache-airflow['postgresql']
 pip install psycopg2-binary
 
